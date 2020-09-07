@@ -1,0 +1,11 @@
+service Greeter{
+    rpc SayHello (HelloRequest) returns (HelloReply) {}
+}
+
+message HelloRequest {
+    String name = 1;
+}
+
+message HelloReply {
+    String message = 1;
+}
