@@ -387,6 +387,24 @@ public class Solutions {
         System.out.println(root);
     }
 
+    //二叉树的前序，中序，后序迭代遍历
+    public void preStackSearch(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+        Stack<TreeNode> stack = new Stack<>();
+        stack.push(root);
+        while (!stack.isEmpty()){
+            TreeNode temp = stack.pop();
+            System.out.println(temp.getItem());
+            if(temp.getRightNode() != null){
+                stack.push(temp.getRightNode());
+            }
+            if(temp.getLeftNode() != null){
+                stack.push(temp.getLeftNode());
+            }
+        }
+    }
     //计算卡特兰数:应用场景：给定N个节点，能形成多少种不同的二叉树
     //C(n+1) = 2*(2*n+1)/(n+2)) * C(n)
     public int caculateCatelan(int n) {

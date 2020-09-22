@@ -1,0 +1,6 @@
+<Configure scan="true" scanPeriod="10 seconds">
+    <include resource="org/springframework/boot/logging/logback/base.xml"></include>
+    <logger name="org.apache.kafka.clients" lever="error">
+
+    </logger>
+</Configure>
