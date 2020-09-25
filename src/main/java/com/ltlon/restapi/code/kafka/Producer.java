@@ -6,7 +6,7 @@ import org.apache.kafka.clients.producer.ProducerRecord;
 
 import java.util.Properties;
 
-public class producer {
+public class Producer {
 
     private static final String brokerList = "188.131.134.127:9092";
     private static final String topic = "topic-demo";

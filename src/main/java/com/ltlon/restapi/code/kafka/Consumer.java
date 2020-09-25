@@ -10,7 +10,7 @@ import java.time.Duration;
 import java.util.Collections;
 import java.util.Properties;
 
-public class consumer {
+public class Consumer {
 
     private static final String brokerList = "188.131.134.127:9092";
     private static final String topic = "topic-demo";
