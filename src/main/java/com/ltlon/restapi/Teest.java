@@ -1,6 +1,7 @@
 package com.ltlon.restapi;
 
 import com.ltlon.restapi.leetcode.ListNode;
+import org.springframework.scheduling.annotation.Async;
 
 public class Teest {
 
@@ -20,6 +21,7 @@ public class Teest {
         void add(Node node);
     }
 
+    @Async
     private static class LinkListImpl implements LinkList {
 
         //所有层的头节点，节点内容为空,只使用forward数组存储每层的起始next节点

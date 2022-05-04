@@ -4,6 +4,7 @@ import com.ltlon.restapi.leetcode.node.TreeNode;
 import org.springframework.util.StringUtils;
 
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @program: restapi
@@ -23,11 +24,15 @@ public class Solutions {
     }
 
     public static void main(String[] args) {
-        String s = "A man, a plan, a canal: Panama";
+/*        String s = "A man, a plan, a canal: Panama";
         System.out.println(isPalindrome(s));
         String s2 = "aab";
         //System.out.println(partition(s2));
-        System.out.println(isPalindrome2(s));
+        System.out.println(isPalindrome2(s));*/
+        ConcurrentHashMap<Integer,Integer> h = new ConcurrentHashMap<Integer,Integer>(8);
+        h.put(1,4);
+        System.out.println(h.computeIfAbsent(1,x -> 3));
+        System.out.println(h.get(1));
     }
 
     // 找出数组中只出现一次的数字，其他数字都是两次
@@ -39,6 +44,12 @@ public class Solutions {
             result = nums[i] ^ result;
         }
         return result;
+
+
+
+
+
+
     }
 
     //找出众数(1个)，既出现次数大于2/n(数组长度)的元素
@@ -201,10 +212,10 @@ public class Solutions {
         }
         ListNode current = reverseListUseRecurrence(head.getNext());
         //反转指向
-        head.getNext().getNext().setNext(head);
+        current.setNext(head);
         //防止循环指向
         head.setNext(null);
-        return current;
+        return current.getNext();
     }
 
     //2.链表中环的检测，快慢指针
@@ -513,7 +524,7 @@ public class Solutions {
     int lefeHight = 0;
     int rightHight = 0;
     public int  caculateHeightTree(TreeNode<Integer> treeNode,int height) {
-        if(treeNode.getRightNode() == null && treeNode.getRightNode()==null) {
+        if(treeNode.getRightNode() == null && treeNode.getLeftNode()==null) {
             return height;
         }
         if(treeNode.getLeftNode() != null) {
@@ -531,15 +542,27 @@ public class Solutions {
     //广度优先搜索(二叉树的按层遍历)辅助队列
     LinkQueue<TreeNode> queue = new LinkQueue();
     public void widthSearch(TreeNode root) {
-        queue.enQueue(root);
         while (queue != null) {
             TreeNode  temp = (TreeNode) queue.deQueue().getItem();
-            if (root.getLeftNode() != null) {
+            if (temp.getLeftNode() != null) {
                 queue.enQueue(root.getLeftNode());
             }
-            if (root.getRightNode() != null) {
+            if (temp.getRightNode() != null) {
                 queue.enQueue(root.getRightNode());
             }
         }
     }
+    //找出数组中重复的元素
+    public int findReadpeadNumber(int[] nums){
+        HashSet hashSet = new HashSet();
+        for(int num : nums){
+            if(hashSet.add(num) == false){
+                return num;
+
+            }
+        }
+        return -1;
+
+    }
+
 }

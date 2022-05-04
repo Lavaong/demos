@@ -12,6 +12,21 @@ import java.util.List;
  **/
 public class Sorts {
 
+    public static void main(String[] args) {
+        ListNode<Integer> listNode = new ListNode(1);
+        ListNode<Integer> listNode2 = new ListNode(3);
+        ListNode<Integer> listNode3 = new ListNode(2);
+        ListNode<Integer> listNode4 = new ListNode(4);
+        ListNode<Integer> listNode5 = new ListNode(5);
+        listNode.setNext(listNode2);
+        listNode2.setNext(listNode3);
+        listNode3.setNext(listNode4);
+        listNode4.setNext(listNode5);
+        listNode5.setNext(null);
+        Sorts sorts = new Sorts();
+        ListNode<Integer> head= sorts.sortInList(listNode);
+    }
+
     //冒泡排序，稳定，O(n), O(n^2),O(n^2)
     public void bubble(int[] arrs,int n){
         if(n <= 1){
@@ -50,6 +65,31 @@ public class Sorts {
             //插入数据
             arrs[j+1] = value;
         }
+    }
+
+    //单向链表实现选择排序
+    public ListNode sortInList (ListNode<Integer> head) {
+        if(head == null){
+            return null;
+        }
+        ListNode<Integer> temp = head;
+        while(temp != null){
+            ListNode<Integer> innerIndex = temp.next;
+            ListNode<Integer> minIndex = temp;
+            while(innerIndex != null){
+                if(innerIndex.item < minIndex.item){
+                    minIndex = innerIndex;
+                }
+                innerIndex = innerIndex.next;
+            }
+            //swap
+            int value  = temp.item;
+            temp.item = minIndex.item;
+            minIndex.item = value;
+
+            temp = temp.next;
+        }
+        return head;
     }
     //选择排序 不稳定，复杂度O(n^2),O(n^2),O(n^2)
     public void select(int[] arrs,int n){

@@ -10,9 +10,9 @@ public class ListNode<E> {
 
 
         //节点数据
-        private E item;
+        public E item;
         //节点的next节点
-        private ListNode<E> next;
+        public ListNode<E> next;
         ListNode(E e){
             this.item = e;
         }
